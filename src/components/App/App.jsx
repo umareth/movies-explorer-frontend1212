@@ -17,7 +17,7 @@ const App = () => {
   const [valueRegister, setValueRegister] = useState({});
   const [valueLogin, setValueLogin] = useState({});
   // const [loadingContent, setLoadingContent] = useState(true);
-  const [isErrorPage, setIsErrorPage] = useState(false);
+  const [isErrorPage, setIsErrPage] = useState(false);
   const { pathname } = useLocation();
 
   return (
@@ -63,7 +63,7 @@ const App = () => {
         />
         <Route path="/signup" element={loggedIn ? <Navigate to="/" replace /> : <Auth name="registration" value={valueRegister} setValue={setValueRegister} isLoading={isLoading} />} />
         <Route path="/signin" element={loggedIn ? <Navigate to="/movies" replace /> : <Auth value={valueLogin} setValue={setValueLogin} isLoading={isLoading} setLoggedIn={setLoggedIn} />} />
-        <Route path="*" element={<Error setIsErrorPage={setIsErrorPage} />} />
+        <Route path="*" element={<Error setIsErrPage={setIsErrPage} />} />
       </Routes>
 
       {!isErrorPage && pathname !== "/signin" && "/signup" && <Footer />}
